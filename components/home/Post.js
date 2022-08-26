@@ -9,6 +9,9 @@ const Post = ({ post }) => {
       <PostHeader post={post} />
       <PostImage post={post} />
       <PostFooter />
+      <Likes post={post} />
+      <Caption post={post} />
+      <CommentSection post={post} />
     </View>
   );
 };
@@ -83,6 +86,32 @@ const Icon = ({ imgurl, imgstyle }) => (
   <TouchableOpacity>
     <Image source={{ uri: imgurl }} style={imgstyle} />
   </TouchableOpacity>
+);
+
+const Likes = ({ post }) => (
+  <View style={{ marginTop: 5, marginLeft: 10 }}>
+    <Text style={{ fontWeight: "600" }}>{post.likes} likes</Text>
+  </View>
+);
+
+const Caption = ({ post }) => (
+  <View style={{ flexDirection: "row", marginLeft: 10, marginTop: 5 }}>
+    <Text style={{ fontWeight: "600" }}>{post.user}</Text>
+    <Text> {post.caption}</Text>
+  </View>
+);
+
+const CommentSection = ({ post }) => (
+  <View style={{ marginTop: 5, marginLeft: 10 }}>
+    <TouchableOpacity>
+      {!!post.comments.length && (
+        <Text style={{ color: "grey" }}>
+          view{post.comments.length > 1 ? " all" : ""} {post.comments.length}{" "}
+          {post.comments.length > 1 ? "comments" : "comment"}
+        </Text>
+      )}
+    </TouchableOpacity>
+  </View>
 );
 
 export default Post;
