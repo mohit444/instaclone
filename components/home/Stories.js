@@ -25,8 +25,8 @@ export default Stories;
 
 const styles = StyleSheet.create({
   story: {
-    width: 75,
-    height: 75,
+    width: 70,
+    height: 70,
     borderRadius: 50,
     borderWidth: 3,
     borderColor: "#ff8501",
