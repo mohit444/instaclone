@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 export const iconstabs = [
   {
@@ -30,12 +31,18 @@ export const iconstabs = [
 ];
 
 const BottomTabs = ({ icons }) => {
+  const [activeTab, setActiveTab] = useState("Home");
+
   return (
     <View>
-      <Text>BottomTabs</Text>
+      {icons.map((icon, index) => (
+        <Icon key={index} name={icon.active} />
+      ))}
     </View>
   );
 };
+
+const Icon = (props) => <Ionicons name={props.name} size={30} />;
 
 export default BottomTabs;
 
